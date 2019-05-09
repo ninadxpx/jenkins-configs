@@ -85,7 +85,7 @@
                </executions>
                <configuration>
                   <serverId>nexus-releases</serverId>
-                  <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
+                  <nexusUrl>http://172.30.24.20:8081/nexus/</nexusUrl>
                   <skipStaging>true</skipStaging>
                </configuration>
             </plugin>
