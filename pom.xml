@@ -3,7 +3,7 @@
 	<groupId>com.test.maven</groupId>
 	<artifactId>JenkinsPilot</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.3</version>
 	<name>JenkinsPilot Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
@@ -22,7 +22,7 @@
    
    <developerConnection>scm:git:git@github.com:ninadxpx/jenkins-configs.git</developerConnection>
    					    
-  <tag>v0.0.1</tag>
+  <tag>v0.0.3</tag>
   </scm>
 
 
