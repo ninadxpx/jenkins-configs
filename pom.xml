@@ -3,7 +3,7 @@
 	<groupId>com.test.maven</groupId>
 	<artifactId>JenkinsPilot</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>JenkinsPilot Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
