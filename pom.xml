@@ -16,7 +16,8 @@
     </distributionManagement>
     
     
-   <!-- SCM in the Maven pom -->
+   <!-- SCM in the Maven pom test -->
+   
 
 <scm>
    
