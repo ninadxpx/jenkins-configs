@@ -3,7 +3,11 @@
 	<groupId>com.test.maven</groupId>
 	<artifactId>JenkinsPilot</artifactId>
 	<packaging>war</packaging>
+<<<<<<< HEAD
 	<version>0.0.1</version>
+=======
+	<version>0.0.7-SNAPSHOT</version>
+>>>>>>> 67d673a2378eb608cc98f9909089aee48d3157f1
 	<name>JenkinsPilot Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
@@ -11,7 +15,7 @@
 	<distributionManagement>
         <repository>
           <id>nexus-releases</id>
-          <url>http://localhost:8081/#browse/browse:TestNexus</url>
+          <url>http://172.30.24.20:8081/repository/TestNexus/</url>
        </repository>
     </distributionManagement>
     
@@ -22,7 +26,7 @@
    
    <developerConnection>scm:git:git@github.com:ninadxpx/jenkins-configs.git</developerConnection>
    					    
-  <tag>v0.0.1</tag>
+  <tag>v0.0.3</tag>
   </scm>
 
 
@@ -85,7 +89,7 @@
                </executions>
                <configuration>
                   <serverId>nexus-releases</serverId>
-                  <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
+                  <nexusUrl>http://172.30.24.20:8081/</nexusUrl>
                   <skipStaging>true</skipStaging>
                </configuration>
             </plugin>
