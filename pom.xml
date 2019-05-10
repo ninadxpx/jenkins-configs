@@ -20,7 +20,8 @@
    
 
 <scm>
-   
+	<connection>scm:git:git@github.com:ninadxpx/jenkins-configs.git</connection>
+   <url>scm:git:git@github.com:ninadxpx/jenkins-configs.git</url>   
    <developerConnection>scm:git:git@github.com:ninadxpx/jenkins-configs.git</developerConnection>
    					    
   <tag>v0.0.7</tag>
