@@ -1,0 +1,70 @@
+GITHUB_PROJECT = "https://github.com/ninadxpx/jenkins-configs.git"
+GITHUB_CREDENTIALS_ID = "14bb0499-569e-449b-9d41-4402c5d5a8a4" //maps to a Jenkins Credentials Vault ID
+                            
+APPLICATION_NAME = "jenkins-configs"
+GITHUB_BRANCH = '${env.BRANCH_NAME}'
+
+node{
+     def branches
+     def gitURL = GITHUB_PROJECT
+     
+    stage('Get Branches') {
+        //git credentialsId: GITHUB_CREDENTIALS_ID, url: GITHUB_PROJECT
+        def command = "git ls-remote -h $gitURL"
+        def proc = command.execute()
+        proc.waitFor()              
+
+        if ( proc.exitValue() != 0 ) {
+            println "Error, ${proc.err.text}"
+            System.exit(-1)
+        }
+        branches = proc.in.text.readLines().collect { 
+            it.replaceAll(/[a-z0-9]*\trefs\/heads\//, '') 
+        }
+        println branches
+    }
+     	stage('Select branch form User Input') {
+           def   liste = new ArrayList<String>(branches)
+           println liste
+           echo "please click on the link here to chose the branch to build"
+           env.BRANCH_SCOPE = input message: 'Please choose the branch to build ', ok: 'Validate!',
+           parameters: [choice(name: 'BRANCH_NAME', choices: liste, description: 'Branch to build?')]
+        
+     }
+    
+    
+    stage('Build') {
+         echo 'Build stage started ================>' + env.BRANCH_SCOPE
+         
+         git credentialsId: GITHUB_CREDENTIALS_ID, url: gitURL , branch: env.BRANCH_SCOPE
+         //mvnHome = tool 'M3'
+         mvnHome = tool 'Maven'
+         echo 'checkout done'
+        
+         if (isUnix()) {
+        sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+         } else {
+           echo 'windows env detected'
+           bat(/"${mvnHome}\bin\mvn" clean install/)
+         }
+   }
+   stage('Deploy') {
+        // sh "ssh -T git@github.com"
+       //  sh "git config --global user.email 'ngosavi@xpanxion.com'"
+        // sh "git config --global user.name 'ninadxpx'"
+        echo 'release clean ========>>>>>'
+        withMaven(        
+        maven: 'Maven',        
+        globalMavenSettingsConfig: 'global_mvn_settings') {     
+        sh "'${mvnHome}/bin/mvn' release:clean"
+        // bat(/"${mvnHome}\bin\mvn" release:clean/)
+        echo 'done clean now preparing'
+        sh "'${mvnHome}/bin/mvn' release:prepare"
+        // bat(/"${mvnHome}\bin\mvn" release:prepare/)
+        echo 'done prepare,now performing'
+        sh "'${mvnHome}/bin/mvn' release:perform"
+        // bat(/"${mvnHome}\bin\mvn" release:perform/)
+         echo 'done perform'
+    }
+   }
+}
