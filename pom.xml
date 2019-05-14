@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.test.maven</groupId>
+	<artifactId>JenkinsPilot</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.7-SNAPSHOT</version>
+	<name>JenkinsPilot Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+		<!-- ADDED NEXUS REPO -->
+	<distributionManagement>
+        <repository>
+          <id>nexus-releases</id>
+          <url>http://172.30.24.20:8081/repository/TestNexus/</url>
+       </repository>
+    </distributionManagement>
+    
+    
+   <!-- SCM in the Maven pom test -->
+   
+<scm>
+   <connection>scm:git:git@github.com:ninadxpx/jenkins-configs.git</connection>
+   <url>scm:git:git@github.com:ninadxpx/jenkins-configs.git</url>
+   <developerConnection>scm:git:git@github.com:ninadxpx/jenkins-configs.git</developerConnection>
+</scm>
+
+
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>				
+
+
+				<configuration>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<releaseProfiles>releases</releaseProfiles>
+				</configuration>
+			</plugin>
+		</plugins>
+		<finalName>JenkinsPilot</finalName>
+	</build>
+	
+	
+	
+	<profiles>
+   <profile>
+      <id>releases</id>
+      <build>
+         <plugins>
+            <plugin>
+               <groupId>org.sonatype.plugins</groupId>
+               <artifactId>nexus-staging-maven-plugin</artifactId>
+               <version>1.5.1</version>
+               <executions>
+                  <execution>
+                     <id>default-deploy</id>
+                     <phase>deploy</phase>
+                     <goals>
+                        <goal>deploy</goal>
+                     </goals>
+                  </execution>
+               </executions>
+               <configuration>
+                  <serverId>nexus-releases</serverId>
+                  <nexusUrl>http://172.30.24.20:8081/</nexusUrl>
+                  <skipStaging>true</skipStaging>
+               </configuration>
+            </plugin>
+         </plugins>
+      </build>
+   </profile>
+</profiles>
+	
+	
+	
+	
+	
+</project>
