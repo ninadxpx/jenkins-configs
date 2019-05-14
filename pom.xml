@@ -16,14 +16,20 @@
     </distributionManagement>
 
    <!-- SCM in the Maven pom -->
-  
+  <!--
   <scm>
    <connection>scm:git:https://github.com/ninadxpx/jenkins-configs</connection>
    <url>http://github.com/ninadxpx/jenkins-configs</url>
    <developerConnection>scm:git:https://github.com/ninadxpx/jenkins-configs</developerConnection>
   <tag>v0.0.10</tag>
   </scm>
-
+-->
+	<scm>
+   <connection>scm:git:git@github.com/ninadxpx/jenkins-configs.git</connection>
+   <url>scm:git:git@github.com:ninadxpx/jenkins-configs.git</url>
+   <developerConnection>scm:git:git@github.com:ninadxpx/jenkins-configs.git</developerConnection>
+  <tag>v0.0.10</tag>
+</scm>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
