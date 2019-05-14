@@ -3,7 +3,7 @@
 	<groupId>com.test.maven</groupId>
 	<artifactId>JenkinsPilot</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.7-SNAPSHOT</version>
+	<version>0.0.10-SNAPSHOT</version>
 	<name>JenkinsPilot Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
@@ -16,6 +16,7 @@
     </distributionManagement>
     
     
+<<<<<<< HEAD
    <!-- SCM in the Maven pom -->
   
   <scm>
@@ -23,6 +24,18 @@
    <url>http://github.com/ninadxpx/jenkins-configs</url>
    <developerConnection>scm:git:https://github.com/ninadxpx/jenkins-configs</developerConnection>
 </scm>
+=======
+   <!-- SCM in the Maven pom test -->
+   
+
+<scm>
+	<connection>scm:git:git@github.com:ninadxpx/jenkins-configs.git</connection>
+   <url>scm:git:git@github.com:ninadxpx/jenkins-configs.git</url>   
+   <developerConnection>scm:git:git@github.com:ninadxpx/jenkins-configs.git</developerConnection>
+   					    
+  <tag>v0.0.7</tag>
+  </scm>
+>>>>>>> 472436c90b3ddd05a146374f48c32951838c63e2
 
 
 	<dependencies>
