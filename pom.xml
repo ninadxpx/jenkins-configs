@@ -14,9 +14,7 @@
           <url>http://172.30.24.20:8081/repository/TestNexus/</url>
        </repository>
     </distributionManagement>
-    
-    
-<<<<<<< HEAD
+
    <!-- SCM in the Maven pom -->
   
   <scm>
@@ -24,19 +22,6 @@
    <url>http://github.com/ninadxpx/jenkins-configs</url>
    <developerConnection>scm:git:https://github.com/ninadxpx/jenkins-configs</developerConnection>
 </scm>
-=======
-   <!-- SCM in the Maven pom test -->
-   
-
-<scm>
-	<connection>scm:git:git@github.com:ninadxpx/jenkins-configs.git</connection>
-   <url>scm:git:git@github.com:ninadxpx/jenkins-configs.git</url>   
-   <developerConnection>scm:git:git@github.com:ninadxpx/jenkins-configs.git</developerConnection>
-   					    
-  <tag>v0.0.7</tag>
-  </scm>
->>>>>>> 472436c90b3ddd05a146374f48c32951838c63e2
-
 
 	<dependencies>
 		<dependency>
